@@ -7,7 +7,21 @@ The server exposes small, explicit tools for simple arithmetic, plus tools for e
 ## Run
 
 ```powershell
-dotnet run --project D:\L\Projects\MCP_Math\MCP_Math.csproj
+dotnet run --project MCP_Math.csproj
+```
+
+## Standalone Build
+
+Create a self-contained single-file build:
+
+```powershell
+.\scripts\build-standalone.ps1
+```
+
+The default output is:
+
+```text
+artifacts/standalone/win-x64/
 ```
 
 ## MCP Config
@@ -22,7 +36,7 @@ Add this to your `mcp.json`:
       "args": [
         "run",
         "--project",
-        "D:/L/Projects/MCP_Math/MCP_Math.csproj"
+        "/path/to/MCP_Math/MCP_Math.csproj"
       ]
     }
   }
@@ -40,8 +54,20 @@ After the first build, you can use `--no-build`:
         "run",
         "--no-build",
         "--project",
-        "D:/L/Projects/MCP_Math/MCP_Math.csproj"
+        "/path/to/MCP_Math/MCP_Math.csproj"
       ]
+    }
+  }
+}
+```
+
+For a standalone build, point the MCP client directly at the published executable:
+
+```json
+{
+  "mcpServers": {
+    "math": {
+      "command": "/path/to/MCP_Math/artifacts/standalone/win-x64/MCP_Math.exe"
     }
   }
 }
