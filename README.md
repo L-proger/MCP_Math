@@ -18,6 +18,12 @@ Create a self-contained single-file build:
 .\scripts\build-standalone.ps1
 ```
 
+Build all recommended standalone packages:
+
+```powershell
+.\scripts\build-all-standalone.ps1
+```
+
 The default output is:
 
 ```text
