@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using ModelContextProtocol;
 using ModelContextProtocol.Server;
 
@@ -7,9 +7,9 @@ namespace MCP_Math;
 public sealed partial class MathTools
 {
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Add a list of numbers.")]
-    public static object add_numbers(
-        [Description("Numbers to add. Must contain at least one finite number.")]
+    [Description("Use this tool whenever you need an exact sum of numbers, especially for arrays, lists, sequences, totals, or series. Do not add lists of numbers manually.")]
+    public static object sum_numbers(
+        [Description("Numbers to sum. Must contain at least one finite number.")]
         double[] numbers)
     {
         ValidateNumbers(numbers, nameof(numbers), requireNonEmpty: true);
@@ -17,11 +17,11 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Subtract one or more numbers from an initial value.")]
+    [Description("Use this tool whenever exact subtraction is needed: subtract one or more numbers from an initial value in order.")]
     public static object subtract_numbers(
         [Description("Initial value.")]
         double minuend,
-        [Description("Numbers to subtract from the initial value.")]
+        [Description("Numbers to subtract from the initial value, applied in order.")]
         double[] subtrahends)
     {
         ValidateFinite(minuend, nameof(minuend));
@@ -36,7 +36,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Multiply a list of numbers.")]
+    [Description("Use this tool whenever you need an exact product of numbers, especially for arrays, lists, sequences, or repeated factors.")]
     public static object multiply_numbers(
         [Description("Numbers to multiply. Must contain at least one finite number.")]
         double[] numbers)
@@ -46,7 +46,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Divide an initial value by one or more divisors.")]
+    [Description("Use this tool whenever exact division is needed: divide an initial value by one or more divisors in order.")]
     public static object divide_numbers(
         [Description("Initial value to divide.")]
         double dividend,
@@ -67,7 +67,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Compute the arithmetic mean of a list of numbers.")]
+    [Description("Use this tool whenever you need an exact arithmetic mean or average of a list, array, sequence, or series of numbers.")]
     public static object average_numbers(
         [Description("Numbers to average. Must contain at least one finite number.")]
         double[] numbers)
@@ -78,7 +78,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Find the smallest number in a list.")]
+    [Description("Use this tool whenever you need the exact minimum value from a list, array, sequence, or series of numbers.")]
     public static object min_number(
         [Description("Numbers to inspect. Must contain at least one finite number.")]
         double[] numbers)
@@ -88,7 +88,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Find the largest number in a list.")]
+    [Description("Use this tool whenever you need the exact maximum value from a list, array, sequence, or series of numbers.")]
     public static object max_number(
         [Description("Numbers to inspect. Must contain at least one finite number.")]
         double[] numbers)
@@ -98,7 +98,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Find the smallest and largest numbers in a list.")]
+    [Description("Use this tool whenever you need both the exact minimum and maximum values from a list, array, sequence, or series of numbers.")]
     public static object min_max_numbers(
         [Description("Numbers to inspect. Must contain at least one finite number.")]
         double[] numbers)
@@ -108,7 +108,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Round a number to a specified number of decimal digits.")]
+    [Description("Use this tool whenever exact numeric rounding is needed to a specified number of decimal digits.")]
     public static object round_number(
         [Description("Value to round.")]
         double value,
@@ -123,7 +123,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Compute a percentage of a value, for example 20 percent of 150.")]
+    [Description("Use this tool whenever you need an exact percentage of a value, for example 20 percent of 150.")]
     public static object percentage(
         [Description("Base value.")]
         double value,
@@ -142,7 +142,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Compute percentage change from one value to another.")]
+    [Description("Use this tool whenever you need the exact percentage change from one value to another.")]
     public static object percentage_change(
         [Description("Starting value. Cannot be zero.")]
         double from,
@@ -163,7 +163,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Raise a number to a power.")]
+    [Description("Use this tool whenever you need an exact numeric power: raise a base value to an exponent.")]
     public static object power_number(
         [Description("Base value.")]
         double @base,
@@ -182,7 +182,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Compute a root of a number, square root by default.")]
+    [Description("Use this tool whenever you need an exact numeric root of a value, square root by default.")]
     public static object root_number(
         [Description("Value whose root should be computed.")]
         double value,
@@ -206,7 +206,7 @@ public sealed partial class MathTools
     }
 
     [McpServerTool(ReadOnly = true, Destructive = false, Idempotent = true, OpenWorld = false)]
-    [Description("Compute the absolute value of a number.")]
+    [Description("Use this tool whenever you need the exact absolute value of a number.")]
     public static object absolute_number(
         [Description("Value whose absolute value should be computed.")]
         double value)
@@ -234,3 +234,4 @@ public sealed partial class MathTools
         return Math.Abs(value % 2) == 1 && Math.Abs(value - Math.Round(value)) < 1e-12;
     }
 }
+

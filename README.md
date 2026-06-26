@@ -1,8 +1,8 @@
-# MCP Math
+﻿# MCP Math
 
 MCP stdio server with math tools written in C# for .NET 10.
 
-The server exposes small, explicit tools for simple arithmetic, plus tools for expressions, algebra, matrices, vectors, statistics, units, geometry, number theory, and complex numbers.
+The server exposes small, explicit tools for simple arithmetic, plus tools for expressions, algebra, matrices, vectors, statistics, units, geometry, number theory, complex numbers, and PNG charts.
 
 ## Run
 
@@ -42,7 +42,7 @@ Add this to your `mcp.json`:
       "args": [
         "run",
         "--project",
-        "/path/to/MCP_Math/MCP_Math.csproj"
+        "/path/to/MCP.Math/MCP_Math.csproj"
       ]
     }
   }
@@ -60,7 +60,7 @@ After the first build, you can use `--no-build`:
         "run",
         "--no-build",
         "--project",
-        "/path/to/MCP_Math/MCP_Math.csproj"
+        "/path/to/MCP.Math/MCP_Math.csproj"
       ]
     }
   }
@@ -73,7 +73,7 @@ For a standalone build, point the MCP client directly at the published executabl
 {
   "mcpServers": {
     "math": {
-      "command": "/path/to/MCP_Math/artifacts/standalone/win-x64/MCP_Math.exe"
+      "command": "/path/to/MCP.Math/artifacts/standalone/win-x64/MCP_Math.exe"
     }
   }
 }
@@ -81,11 +81,11 @@ For a standalone build, point the MCP client directly at the published executabl
 
 ## Tool Groups
 
-- Arithmetic: add, subtract, multiply, divide, average, min/max, rounding, percentages, powers, roots, absolute value.
+- Arithmetic: exact sum of number arrays/lists (`sum_numbers`), subtract, multiply, divide, average, min/max, rounding, percentages, powers, roots, absolute value.
 - Expressions and algebra: calculate, simplify, expand, factorize, solve equations/systems, derivative, integral, limit, summation.
 - Linear algebra: matrix operations and vector operations.
 - Analysis helpers: statistics, unit conversion, triangle solving, prime factorization, GCD/LCM, complex number operations.
-- Plotting helper: samples a function into plot-ready points.
+- Plotting helpers: sample a function into points or return PNG image charts for expressions, multiple expressions, points, scatter plots, bar charts, histograms, polar plots, heatmaps, time series, error bars, box plots, step plots, area charts, and pie charts.
 
 ## Expression Notes
 
@@ -105,3 +105,6 @@ x**2
 ```
 
 Some symbolic operations may return an unresolved expression when the math engine cannot solve the expression exactly.
+
+
+
